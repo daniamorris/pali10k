@@ -270,7 +270,9 @@ class DDMmobil
       $b = 1;
       echo '<p><b>Your Events</b></p>';
 		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-		printf("<p><b>Date:</b> %s <b>Location:</b> %s<br><b>Details:</b> %s %s</p>", $row["date"], $row["location"], $row["details"], $row["moreinfo"]);
+		$mydate = date_create($row["date"]);
+		$datef = date_format($mydate, 'l F jS \a\t g:ia');
+		printf("<p><b>Date:</b> $datef<br><b>Location:</b> %s<br><b>Details:</b> %s %s</p>", $row["location"], $row["details"], $row["moreinfo"]);
 		$b++; 
 		}
 
@@ -298,7 +300,9 @@ class DDMmobil
       $b = 1;
       echo '<p><b>Other Events</b></p>';
 		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-		printf("<p><b>Date:</b> %s <b>Location:</b> %s<br><b>Details:</b> %s %s</p>", $row["date"], $row["location"], $row["details"], $row["moreinfo"]);
+		$mydate = date_create($row["date"]);
+		$datef = date_format($mydate, 'l F jS \a\t g:ia');
+		printf("<p><b>Date:</b> $datef<br><b>Location:</b> %s<br><b>Details:</b> %s %s</p>", $row["location"], $row["details"], $row["moreinfo"]);
 		$b++; 
 		}
 
@@ -326,7 +330,9 @@ class DDMmobil
       $b = 1;
       echo '<p><b>Events</b></p>';
 		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-		printf("<p><input name='id[]' type='checkbox' value='%s'><b>&nbsp; Delete Event $b:</b> %s %s %s %s</p>", $row["id"], $row["date"], $row["location"], $row["details"], $row["moreinfo"]);
+		$mydate = date_create($row["date"]);
+		$datef = date_format($mydate, 'm/d/y g:ia');
+		printf("<p><input name='id[]' type='checkbox' value='%s'><b>&nbsp; Delete Event $b:</b> $datef <br>%s - %s</p>", $row["id"], $row["location"], $row["details"]);
 		$b++; 
 		}
 		
