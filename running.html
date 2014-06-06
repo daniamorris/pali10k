@@ -82,6 +82,11 @@
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script>
+	document.addEventListener("deviceready", onDeviceReady, false);
+
+	function onDeviceReady() {
+		console.log(device.cordova);
+		var deviceID = device.uuid;
 
 		$( "#logstart" ).click(function() {
         // If the browser supports the Geolocation API
@@ -92,7 +97,7 @@
         
         // Save the positions' history
         var path = [];
-        var morepath = []; //save more info from nagigator watch
+        var morepath = []; //save more info from navigator watchPosition
  
         var watchID = navigator.geolocation.watchPosition(function(position) {
           // Save the current position
@@ -108,18 +113,9 @@
           var map = new google.maps.Map(document.getElementById("map"), myOptions);
 
           // Create the array that will be used to fit the view to the points range and
-          // place the markers to the polyline's points
           var latLngBounds = new google.maps.LatLngBounds();
           for(var i = 0; i < path.length; i++) {
             latLngBounds.extend(path[i]);
-            // Place the marker
-            /*
-            new google.maps.Marker({
-              map: map,
-              position: path[i],
-              title: "Point " + (i + 1)
-            });
-           */
           }
           // Creates the polyline object
           var polyline = new google.maps.Polyline({
@@ -145,7 +141,7 @@
 		$( "#stopping" ).click(function() {
 			if (confirm("Save this run?") == true) {
 				console.log(morepath);
-			$.get( "http://palisades10k.com/app/insertrun.php", { myuuid: 'b710c14d6a29be70', morepath: morepath }, function( data ) {
+			$.get( "http://palisades10k.com/app/insertrun.php", { myuuid: deviceID, morepath: morepath }, function( data ) {
 			$( ".result" ).html( data );
 			});
 				// do all the things
@@ -161,6 +157,7 @@
 
 		});		
 
-    </script>
+	}	
+	</script>
   </body>
 </html>
