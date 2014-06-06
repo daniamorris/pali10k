@@ -92,6 +92,44 @@ class DDMmobil
 
   }
 
+   public function timetot($myuuid)
+  {
+
+    try
+    {
+      $sql = "SELECT SUM(hours), SUM(minutes), SUM(seconds) FROM mytraining WHERE uuid=:myuuid";
+      $stmt = $this->db->prepare($sql);
+      $stmt->bindParam(':myuuid', $myuuid);
+      $stmt->execute();
+		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+      	$myhours = $row["SUM(hours)"];
+      	$mins = $row["SUM(minutes)"];
+      	$secs = $row["SUM(seconds)"];
+      	$minutes = ($myhours * 60) + $mins;
+      	//echo $minutes;
+      	$therest = date('H', mktime(0,$minutes,$secs));
+      	$therest2 = date('i', mktime(0,$minutes,$secs));
+      	$therest3 = date('s', mktime(0,$minutes,$secs));
+      	$d = floor ($minutes / 1440);
+      	$dayhours = ($d * 24) + $therest;
+      	//echo "{$minutes}min converts to {$d}days";
+      	echo "<p><b>Total time:</b> {$dayhours} hours $therest2 minutes $therest3 seconds</p>";
+		//printf("<p><b>Total time:</b> %s hours %s minutes %s seconds</p>", $row["SUM(hours)"], $row["SUM(minutes)"], $row["SUM(seconds)"]);
+		}
+		
+    }
+    
+	catch (PDOException $e)
+	{
+  	echo 'PDO Exception Caught.  ';
+  	echo 'Error with the database: <br />';
+  	echo 'SQL Query: ', $sql;
+  	echo 'Error: ' . $e->getMessage();
+	}
+	echo '<div class="clear"> </div>';
+
+  }
+
    public function setgoal($myuuid, $goals, $notes)
   {
 
@@ -371,6 +409,31 @@ class DDMmobil
 	echo '<div class="clear"> </div>';
 
   }
+
+   public function insertarun($myuuid, $morepath)
+  {
+
+    try
+    {
+      $sql = "INSERT INTO myruns (id,uuid,runarray) VALUES (NULL, :myuuid, :morepath)";
+      $stmt = $this->db->prepare($sql);
+      $stmt->bindParam(':myuuid', $myuuid);
+      $stmt->bindParam(':morepath', $morepath);
+      $stmt->execute();
+		echo '<div class="container"><h3 class="center-block">Your run has been added!</h3></div>';
+    }
+    
+	catch (PDOException $e)
+	{
+  	echo 'PDO Exception Caught.  ';
+  	echo 'Error with the database: <br />';
+  	echo 'SQL Query: ', $sql;
+  	echo 'Error: ' . $e->getMessage();
+	}
+	echo '<div class="clear"> </div>';
+
+  }
+
 
 
 }

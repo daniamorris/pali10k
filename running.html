@@ -56,6 +56,7 @@
 				<button id="stopping" type="button" class="btn btn-default btn-lg">
 				<span class="glyphicon glyphicon-stop"></span> Stop</button>
 		<p>&nbsp;</p>
+		<div class="result"></div>
 		<p id="waiting"></p>
 		<div id="map"></div>
 		<p id="error"></p>
@@ -91,10 +92,12 @@
         
         // Save the positions' history
         var path = [];
+        var morepath = []; //save more info from nagigator watch
  
         var watchID = navigator.geolocation.watchPosition(function(position) {
           // Save the current position
           path.push(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+          morepath.push(new Array(position.coords.latitude, position.coords.longitude, position.coords.speed, position.timestamp));
  
           // Create the map
           var myOptions = {
@@ -140,8 +143,20 @@
 		$("#waiting").text("Looking for your location...");
 
 		$( "#stopping" ).click(function() {
+			if (confirm("Save this run?") == true) {
+				console.log(morepath);
+			$.get( "http://palisades10k.com/app/insertrun.php", { myuuid: 'b710c14d6a29be70', morepath: morepath }, function( data ) {
+			$( ".result" ).html( data );
+			});
+				// do all the things
+			} else {
+				// do nothing
+			}
+		//alert( "Stopping" );
+		$( "#waiting" ).empty();
+		//console.log(path);
+		//console.log(morepath);
 		navigator.geolocation.clearWatch(watchID);
-		alert( "Stopping" );
 		});		
 
 		});		

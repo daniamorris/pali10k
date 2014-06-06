@@ -1,4 +1,4 @@
-pali10k
-=======
+pali10-dev
+==========
 
-running app for palisades10k.com
+development site for pali10k running app
