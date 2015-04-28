@@ -96,7 +96,6 @@
         Define access to external domains.
 
         <access />            - a blank access tag denies access to all external resources.
-    <access origin="http://127.0.0.1*"/> <!-- allow local pages -->
 
         Otherwise, you can specify specific domains:
     -->
