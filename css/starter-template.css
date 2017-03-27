@@ -1,5 +1,8 @@
+@import url('https://www.fontify.me/wf/a6fe6fecb7eeccc79fe20f095664e24b');
+@import url('https://www.fontify.me/wf/a09bbcd336cfe6ce40941afb6873e84c');
 body {
   padding-top: 50px;
+  font-family: font95193;
 }
 .starter-template {
   padding: 40px 15px;
