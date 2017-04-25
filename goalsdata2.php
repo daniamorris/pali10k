@@ -1,5 +1,6 @@
 <?php
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
+error_reporting(0);
 include "dbcred.php";
 include "DDMmobil.class.php";
 //$myuuid = 'b710c14d6a29be70';
