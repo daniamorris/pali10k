@@ -75,19 +75,27 @@
 				<p><div class="input-group">
 					<span class="input-group-addon">When:</span>
 					<input type="datetime" name="date" class="form-control" id="date" placeholder="yyyy-mm-dd 1:23:40">
-				</div></p>
 				
-<script type="text/javascript" charset="utf-8">				
+<script type="text/javascript" charset="utf-8">	
+<!--			
 var options = {
-  date: new Date(),
-  mode: 'date'
+    date: new Date(),
+    mode: 'date'
 };
 
-datePicker.show(options, function(date){
-  alert("date result " + date);  
-});
+function onSuccess(date) {
+    alert('Selected date: ' + date);
+}
+
+function onError(error) { // Android only
+    alert('Error: ' + error);
+}
+
+datePicker.show(options, onSuccess, onError);
+// -->
  </script>
  
+				</div></p>
 				<div class="input-group">
 					<span class="input-group-addon">Where:</span>
 					<input type="text" class="form-control" name="location" placeholder="Enter your meeting spot">

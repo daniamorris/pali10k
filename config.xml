@@ -63,9 +63,9 @@
 	<plugin name="cordova-plugin-inappbrowser" spec="~1.7.0" />
 	<plugin name="cordova-plugin-device" spec="~1.1.5" />
 	<plugin name="cordova-plugin-console" spec="~1.0.6" />
-	<gap:plugin name="com.plugin.datepicker" />
-	<!--
 	<plugin name="cordova-plugin-datepicker" source="npm" />
+	
+	<!--
 	<gap:plugin name="com.plugin.datepicker" />
 	<gap:plugin name="com.sharinglabs.cordova.plugin.datepicker" />
 	<plugin name="cordova-plugin-console" spec="1.0.1" source="pgb" />
