@@ -79,13 +79,19 @@
 				
 <script type="text/javascript" charset="utf-8">				
 var options = {
-  date: new Date(),
-  mode: 'date'
+    date: new Date(),
+    mode: 'date'
 };
- 
-datePicker.show(options, function(date){
-  alert("date result " + date);  
-});
+
+function onSuccess(date) {
+    alert('Selected date: ' + date);
+}
+
+function onError(error) { // Android only
+    alert('Error: ' + error);
+}
+
+datePicker.show(options, onSuccess, onError);
  </script>
  
 				<div class="input-group">
