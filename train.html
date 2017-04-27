@@ -75,26 +75,6 @@
 				<p><div class="input-group">
 					<span class="input-group-addon">When:</span>
 					<input type="datetime" name="date" class="form-control" id="date" placeholder="yyyy-mm-dd 1:23:40">
-				
-<script type="text/javascript" charset="utf-8">	
-<!--			
-var options = {
-    date: new Date(),
-    mode: 'date'
-};
-
-function onSuccess(date) {
-    alert('Selected date: ' + date);
-}
-
-function onError(error) { // Android only
-    alert('Error: ' + error);
-}
-
-datePicker.show(options, onSuccess, onError);
-// -->
- </script>
- 
 				</div></p>
 				<div class="input-group">
 					<span class="input-group-addon">Where:</span>
@@ -148,7 +128,7 @@ datePicker.show(options, onSuccess, onError);
 		$('input[name="myuuid"]').val(deviceID);
 
 		$( "button" ).click(function() {
-		$( ".talkback" ).empty();
+			$( ".talkback" ).empty();
 		});
 
 		$( "#trainview" ).click(function() {
