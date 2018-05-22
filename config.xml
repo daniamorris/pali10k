@@ -41,7 +41,6 @@
         Define a specific version of PhoneGap to build into your app.
         <preference name="phonegap-version"       value="3.5.0" />
     -->
-
     <!-- Plugins -->
 
     <!-- Core plugins -->
@@ -87,6 +86,7 @@
     <icon src="res/icon/ios/icon-72.png"            gap:platform="ios"        width="72" height="72" />
     <icon src="res/icon/ios/icon-57-2x.png"         gap:platform="ios"        width="114" height="114" />
     <icon src="res/icon/ios/icon-72-2x.png"         gap:platform="ios"        width="144" height="144" />
+    <icon src="res/icon/ios/icon-1024.png"          gap:platform="ios"        width="1024" height="1024" />
 
 	<!-- I added the next section for additional apple formats -->
 	<!-- iPhone Spotlight and Settings Icon -->
