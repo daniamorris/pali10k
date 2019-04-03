@@ -72,10 +72,6 @@
 
 <plugin name="cordova-plugin-device" spec="2.0.2" />
 
-<plugin name="cordova-plugin-device-motion" spec="2.0.1" />
-
-<plugin name="cordova-plugin-device-orientation" spec="2.0.1" />
-
 <plugin name="cordova-plugin-geolocation" spec="4.0.1" />
 
 <plugin name="cordova-plugin-inappbrowser" spec="3.0.0" />
@@ -181,18 +177,14 @@
     <gap:splash src="res/screen/windows-phone/screen-portrait.jpg"      gap:platform="winphone" />
 
     <gap:config-file platform="ios" parent="CFBundleShortVersionString">
-    <string>103</string>
+    <string>104</string>
     </gap:config-file>
 
 <gap:config-file platform="ios" parent="NSLocationAlwaysUsageDescription">
-  <array>
-    <string>We use your location to track the number of miles you run.</string>
-  </array>
+    <string>We use your location to track the number of miles you run while using this app's log a run feature.</string>
 </gap:config-file>
 <gap:config-file platform="ios" parent="NSLocationWhenInUseUsageDescription">
-  <array>
-    <string>We use your location to track the number of miles you run.</string>
-  </array>
+    <string>This allows us to track your current location during the path of your run for calculating the distance and time spent running.</string>
 </gap:config-file>
 
     <!--
